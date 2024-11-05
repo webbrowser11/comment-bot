@@ -25,7 +25,7 @@ def SearchForNewComments():
        print("Event listener ready!")
     @events.event
     def on_message(message):
-        print(message.actor_username, "performed action", self.type)
+        print(message.project, "performed action", self.type)
         comments.append(message.content)
     events.start()
 
