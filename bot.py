@@ -1,5 +1,4 @@
 import scratchattach as sa
-from datetime import datetime
 
 session = sa.login("user", "password")
 
@@ -7,18 +6,14 @@ project = session.connect_project("project")
 
 keyword = "keyword to check"
 
-today = datetime.today().date()
+def SearchForNewComments():
+    @events.event #Called when the event listener is ready
+    def on_ready():
+       print("Event listener ready!")
+    events.start()
 
-def check_and_reply():
-    comments = project.comments()
-
-    today_comments = [
-        comment for comment in comments 
-        if datetime.fromtimestamp(comment['timestamp']).date() == today
-    ]
-
-
-    for comment in today_comments:
+def CheckAndReply():    
+    for comment in comments:
         if keyword in comment["content"]:
             comment_id = comment["id"]
             content = comment["content"]
