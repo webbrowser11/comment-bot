@@ -6,6 +6,8 @@ project = session.connect_project("project")
 
 keyword = "keyword to check"
 
+comments = []
+
 def CheckAndReply():    
     for comment in comments:
         if keyword in comment["content"]:
@@ -21,6 +23,10 @@ def SearchForNewComments():
     @events.event #Called when the event listener is ready
     def on_ready():
        print("Event listener ready!")
+    @events.event
+    def on_message(message):
+        print(message.actor_username, "performed action", self.type)
+        comments.append(message.content)
     events.start()
 
 check_and_reply()
