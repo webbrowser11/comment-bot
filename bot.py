@@ -18,6 +18,7 @@ def CheckAndReply():
 
             project.reply_comment(comment_id, modified_content)
             print("replied.")
+            comments.del(comment)
 
 def SearchForNewComments():
     @events.event #Called when the event listener is ready
