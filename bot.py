@@ -6,12 +6,6 @@ project = session.connect_project("project")
 
 keyword = "keyword to check"
 
-def SearchForNewComments():
-    @events.event #Called when the event listener is ready
-    def on_ready():
-       print("Event listener ready!")
-    events.start()
-
 def CheckAndReply():    
     for comment in comments:
         if keyword in comment["content"]:
@@ -22,5 +16,11 @@ def CheckAndReply():
 
             project.reply_comment(comment_id, modified_content)
             print("replied.")
+
+def SearchForNewComments():
+    @events.event #Called when the event listener is ready
+    def on_ready():
+       print("Event listener ready!")
+    events.start()
 
 check_and_reply()
