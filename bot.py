@@ -4,6 +4,8 @@ session = sa.login("user", "password")
 
 project = session.connect_project("project")
 
+events = session.connect_message_events()
+
 keyword = "keyword to check"
 
 comments = []
